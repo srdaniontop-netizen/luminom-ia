@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminom IA — Tutor Universitario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="logo">
+        <span class="logo-mark">L</span>
+        <span class="logo-text">Luminom <em>IA</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Inicio</a></li>
+        <li><a href="#catalogo" class="nav-link">Servicios</a></li>
+        <li><a href="#tutor" class="nav-link">Tutor IA</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li><a href="#admin" class="nav-link nav-admin">Admin</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb orb1"></div>
+      <div class="hero-orb orb2"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Disponible 24/7 para estudiantes universitarios
+      </div>
+      <h1 class="hero-title">
+        Tu tutor<br />
+        <span class="title-gold">inteligente</span><br />
+        siempre contigo
+      </h1>
+      <p class="hero-sub">
+        Luminom IA entiende tu carrera, tus materias y tu forma de aprender.
+        Explicaciones claras, ejemplos reales, progreso real.
+      </p>
+      <div class="hero-actions">
+        <a href="#tutor" class="btn-primary">Comenzar ahora</a>
+        <a href="#catalogo" class="btn-ghost">Ver servicios</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">50+</span>
+          <span class="stat-label">Materias cubiertas</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <span class="stat-num">24/7</span>
+          <span class="stat-label">Disponibilidad</span>
+        </div>
+        <div class="stat-div"></div>
+        <div class="stat">
+          <span class="stat-num">IA</span>
+          <span class="stat-label">Personalizada</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card card-a">
+        <div class="fc-icon">∫</div>
+        <div class="fc-text">
+          <p class="fc-title">Cálculo III</p>
+          <p class="fc-sub">Integrales de línea explicadas</p>
+        </div>
+      </div>
+      <div class="floating-card card-b">
+        <div class="fc-icon">⚛</div>
+        <div class="fc-text">
+          <p class="fc-title">Física Cuántica</p>
+          <p class="fc-sub">Función de onda y colapso</p>
+        </div>
+      </div>
+      <div class="floating-card card-c">
+        <div class="fc-icon">{ }</div>
+        <div class="fc-text">
+          <p class="fc-title">Algoritmos</p>
+          <p class="fc-sub">Complejidad y Big-O</p>
+        </div>
+      </div>
+      <div class="luminom-sphere">
+        <div class="sphere-ring ring1"></div>
+        <div class="sphere-ring ring2"></div>
+        <div class="sphere-core">L</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <section class="section catalogo" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Lo que ofrecemos</span>
+        <h2>Tutorías para <span class="gold">cada carrera</span></h2>
+        <p class="section-desc">Desde primer semestre hasta tesis de grado. Luminom IA se adapta a tu nivel y tu programa.</p>
+      </div>
+      <div class="catalog-grid">
+        <div class="catalog-card featured">
+          <div class="catalog-tag">Más solicitado</div>
+          <div class="catalog-icon">∑</div>
+          <h3>Ciencias Exactas</h3>
+          <p>Matemáticas, Física, Química, Estadística y Cálculo en todos sus niveles.</p>
+          <ul class="catalog-list">
+            <li>Álgebra lineal y multivariable</li>
+            <li>Mecánica cuántica y clásica</li>
+            <li>Estadística inferencial</li>
+            <li>Ecuaciones diferenciales</li>
+          </ul>
+          <a href="#tutor" class="catalog-btn">Solicitar tutoría</a>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-icon">💻</div>
+          <h3>Ingeniería y Tech</h3>
+          <p>Programación, estructuras de datos, redes, sistemas operativos y más.</p>
+          <ul class="catalog-list">
+            <li>Algoritmos y complejidad</li>
+            <li>Base de datos relacionales</li>
+            <li>Redes y protocolos</li>
+            <li>Inteligencia artificial</li>
+          </ul>
+          <a href="#tutor" class="catalog-btn">Solicitar tutoría</a>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-icon">⚖</div>
+          <h3>Derecho y Sociales</h3>
+          <p>Análisis de normas, casos jurídicos, filosofía y ciencias políticas.</p>
+          <ul class="catalog-list">
+            <li>Derecho constitucional</li>
+            <li>Teoría del Estado</li>
+            <li>Filosofía política</li>
+            <li>Metodología investigativa</li>
+          </ul>
+          <a href="#tutor" class="catalog-btn">Solicitar tutoría</a>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-icon">🩺</div>
+          <h3>Ciencias de la Salud</h3>
+          <p>Anatomía, fisiología, farmacología y preparación para exámenes clínicos.</p>
+          <ul class="catalog-list">
+            <li>Anatomía topográfica</li>
+            <li>Bioquímica metabólica</li>
+            <li>Farmacología clínica</li>
+            <li>Patología general</li>
+          </ul>
+          <a href="#tutor" class="catalog-btn">Solicitar tutoría</a>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-icon">📊</div>
+          <h3>Economía y Negocios</h3>
+          <p>Microeconomía, finanzas, contabilidad y análisis de mercados.</p>
+          <ul class="catalog-list">
+            <li>Economía microeconómica</li>
+            <li>Finanzas corporativas</li>
+            <li>Contabilidad de costos</li>
+            <li>Análisis de mercados</li>
+          </ul>
+          <a href="#tutor" class="catalog-btn">Solicitar tutoría</a>
+        </div>
+        <div class="catalog-card">
+          <div class="catalog-icon">✍</div>
+          <h3>Humanidades</h3>
+          <p>Literatura, historia, filosofía, redacción académica e investigación.</p>
+          <ul class="catalog-list">
+            <li>Redacción académica</li>
+            <li>Historia universal</li>
+            <li>Filosofía moderna</li>
+            <li>Análisis literario</li>
+          </ul>
+          <a href="#tutor" class="catalog-btn">Solicitar tutoría</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TUTOR IA -->
+  <section class="section tutor-section" id="tutor">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Inteligencia artificial</span>
+        <h2>Habla con <span class="gold">Luminom</span></h2>
+        <p class="section-desc">Tu tutor sabe quién eres, qué estudias y cómo ayudarte mejor. Pregunta lo que necesites.</p>
+      </div>
+      <div class="chat-wrapper">
+        <div class="chat-sidebar">
+          <div class="chat-profile">
+            <div class="chat-avatar">L</div>
+            <div>
+              <p class="chat-name">Luminom IA</p>
+              <p class="chat-status"><span class="online-dot"></span> En línea</p>
+            </div>
+          </div>
+          <div class="chat-info">
+            <p class="info-label">Especialidades activas</p>
+            <div class="specialty-tags">
+              <span class="tag">Matemáticas</span>
+              <span class="tag">Física</span>
+              <span class="tag">Programación</span>
+              <span class="tag">Química</span>
+              <span class="tag">Estadística</span>
+              <span class="tag">Derecho</span>
+            </div>
+          </div>
+          <div class="quick-questions">
+            <p class="info-label">Preguntas rápidas</p>
+            <button class="quick-q" onclick="setQuestion('Explícame qué es una derivada con un ejemplo real')">¿Qué es una derivada?</button>
+            <button class="quick-q" onclick="setQuestion('¿Cómo funciona la herencia en programación orientada a objetos?')">Herencia en POO</button>
+            <button class="quick-q" onclick="setQuestion('Resúmeme la ley de la oferta y la demanda')">Oferta y demanda</button>
+            <button class="quick-q" onclick="setQuestion('¿Cuáles son los principios del derecho procesal?')">Derecho procesal</button>
+          </div>
+        </div>
+        <div class="chat-main">
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg msg-bot">
+              <div class="msg-avatar">L</div>
+              <div class="msg-bubble">
+                <p>¡Hola! Soy <strong>Luminom IA</strong>, tu tutor universitario. Estoy aquí para ayudarte con cualquier materia.</p>
+                <p>Cuéntame: ¿qué carrera estudias y en qué puedo ayudarte hoy?</p>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input-area">
+            <div class="typing-indicator" id="typingIndicator">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu pregunta académica..." />
+              <button class="chat-send" id="chatSend" onclick="sendMessage()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section contact-section" id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">Escríbenos</span>
+          <h2>¿Tienes preguntas<br /><span class="gold">sobre Luminom?</span></h2>
+          <p>Resolvemos tus dudas sobre planes, materias disponibles o cómo funciona la plataforma.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-ico">✉</div>
+              <div>
+                <p class="ci-label">Correo</p>
+                <p class="ci-val">hola@luminom.ia</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">⏱</div>
+              <div>
+                <p class="ci-label">Respuesta</p>
+                <p class="ci-val">Menos de 2 horas</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-ico">🎓</div>
+              <div>
+                <p class="ci-label">Para</p>
+                <p class="ci-val">Estudiantes universitarios</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <div id="formSuccess" class="form-success hidden">
+            <div class="success-icon">✓</div>
+            <h3>¡Mensaje enviado!</h3>
+            <p>Te respondemos en menos de 2 horas.</p>
+          </div>
+          <div id="formContainer">
+            <div class="form-field">
+              <label for="cName">Nombre completo</label>
+              <input type="text" id="cName" placeholder="Ej: María García" />
+              <span class="field-error" id="cNameErr"></span>
+            </div>
+            <div class="form-field">
+              <label for="cEmail">Correo institucional</label>
+              <input type="email" id="cEmail" placeholder="tu@universidad.edu.co" />
+              <span class="field-error" id="cEmailErr"></span>
+            </div>
+            <div class="form-field">
+              <label for="cCarrera">Carrera</label>
+              <select id="cCarrera">
+                <option value="">Selecciona tu carrera</option>
+                <option>Ingeniería de Sistemas</option>
+                <option>Medicina</option>
+                <option>Derecho</option>
+                <option>Economía</option>
+                <option>Matemáticas</option>
+                <option>Administración</option>
+                <option>Otra</option>
+              </select>
+              <span class="field-error" id="cCarreraErr"></span>
+            </div>
+            <div class="form-field">
+              <label for="cMsg">¿En qué podemos ayudarte?</label>
+              <textarea id="cMsg" rows="4" placeholder="Cuéntanos qué materia te está costando trabajo o qué necesitas..."></textarea>
+              <span class="field-error" id="cMsgErr"></span>
+            </div>
+            <button class="btn-primary form-btn" onclick="submitForm()">
+              <span id="btnText">Enviar mensaje</span>
+              <span id="btnLoader" class="hidden">Enviando...</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN -->
+  <section class="section admin-section" id="admin">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Panel privado</span>
+        <h2>Acceso <span class="gold">Administrador</span></h2>
+      </div>
+      <div class="admin-wrapper">
+        <!-- LOGIN -->
+        <div class="admin-login" id="adminLogin">
+          <div class="login-card">
+            <div class="login-logo">L</div>
+            <h3>Iniciar sesión</h3>
+            <p class="login-hint">Solo para administradores de Luminom IA</p>
+            <div class="form-field">
+              <label for="aUser">Usuario</label>
+              <input type="text" id="aUser" placeholder="admin" />
+            </div>
+            <div class="form-field">
+              <label for="aPass">Contraseña</label>
+              <input type="password" id="aPass" placeholder="••••••••" />
+              <span class="field-error" id="loginErr"></span>
+            </div>
+            <button class="btn-primary form-btn" onclick="adminLogin()">Entrar al panel</button>
+            <p class="login-demo">Demo: usuario <code>admin</code> / contraseña <code>luminom2024</code></p>
+          </div>
+        </div>
+        <!-- PANEL -->
+        <div class="admin-panel hidden" id="adminPanel">
+          <div class="panel-header">
+            <h3>Panel de Luminom IA</h3>
+            <button class="logout-btn" onclick="adminLogout()">Cerrar sesión</button>
+          </div>
+          <div class="panel-stats">
+            <div class="panel-stat">
+              <span class="ps-num" id="statMsgs">0</span>
+              <span class="ps-label">Mensajes recibidos</span>
+            </div>
+            <div class="panel-stat">
+              <span class="ps-num">6</span>
+              <span class="ps-label">Materias activas</span>
+            </div>
+            <div class="panel-stat">
+              <span class="ps-num">24/7</span>
+              <span class="ps-label">Disponibilidad</span>
+            </div>
+          </div>
+          <div class="panel-section">
+            <h4>Mensajes de contacto</h4>
+            <div class="messages-table">
+              <div class="table-header">
+                <span>Nombre</span>
+                <span>Carrera</span>
+                <span>Mensaje</span>
+                <span>Estado</span>
+              </div>
+              <div id="messagesList"></div>
+            </div>
+          </div>
+          <div class="panel-section">
+            <h4>Agregar nuevo servicio</h4>
+            <div class="add-service-form">
+              <input type="text" id="svcName" placeholder="Nombre del servicio" />
+              <input type="text" id="svcDesc" placeholder="Descripción breve" />
+              <button class="btn-primary" onclick="addService()">Agregar</button>
+            </div>
+            <div id="servicesList" class="services-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">L</span>
+        <span class="logo-text">Luminom <em>IA</em></span>
+        <p>El tutor universitario que siempre está contigo.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Inicio</a>
+        <a href="#catalogo">Servicios</a>
+        <a href="#tutor">Tutor IA</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <p class="footer-copy">© 2024 Luminom IA · Jóvenes creaTIvos</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
