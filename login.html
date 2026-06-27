@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Iniciar Sesión | Luminom IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:#0A1628; --navy-mid:#112240; --navy-light:#1C3461;
+      --gold:#C9A84C; --gold-light:#E8C97A;
+      --white:#FFFFFF; --off-white:#F8F6F1;
+      --text-primary:#0A1628; --text-secondary:#4A5568;
+      --border:rgba(10,22,40,0.1); --border-gold:rgba(201,168,76,0.3);
+      --shadow-sm:0 2px 12px rgba(10,22,40,0.08);
+      --shadow-md:0 8px 32px rgba(10,22,40,0.14);
+      --radius-sm:8px; --radius-md:14px; --radius-lg:22px;
+      --font-display:'Playfair Display',Georgia,serif;
+      --font-body:'Inter',system-ui,sans-serif;
+      --t:0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--navy);color:var(--white);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;}
+    
+    .auth-wrap{width:100%;max-width:460px;}
+    .logo-section{text-align:center;margin-bottom:2.5rem;}
+    .logo-mark{width:60px;height:60px;background:var(--gold);color:var(--navy);border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:2rem;margin-bottom:1rem;}
+    .logo-text{font-family:var(--font-display);font-size:1.6rem;font-weight:600;color:var(--white);}
+    .logo-text em{color:var(--gold);font-style:italic;}
+
+    .tabs{display:flex;gap:0;background:rgba(255,255,255,0.05);border-radius:var(--radius-md);padding:0.3rem;margin-bottom:2rem;}
+    .tab{flex:1;padding:0.7rem;background:transparent;border:none;color:rgba(255,255,255,0.5);font-weight:600;font-size:0.9rem;cursor:pointer;transition:var(--t);border-radius:var(--radius-sm);}
+    .tab.active{background:var(--gold);color:var(--navy);}
+
+    .form-container{display:none;background:rgba(255,255,255,0.07);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:2.5rem;}
+    .form-container.active{display:block;animation:fadeIn 0.4s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+    .form-field{margin-bottom:1.2rem;}
+    .form-field label{display:block;font-size:0.84rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:0.4rem;}
+    .form-field input,.form-field select{width:100%;border:1.5px solid rgba(255,255,255,0.15);border-radius:var(--radius-sm);padding:0.85rem 1.1rem;font-size:0.92rem;color:var(--white);background:rgba(0,0,0,0.2);outline:none;transition:var(--t);}
+    .form-field input:focus,.form-field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.15);}
+    .form-field input::placeholder{color:rgba(255,255,255,0.3);}
+    .field-error{display:block;font-size:0.75rem;color:#ff6b6b;margin-top:0.35rem;min-height:0.9rem;}
+
+    .btn-submit{width:100%;background:var(--gold);color:var(--navy);padding:1rem;border-radius:100px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:var(--t);margin-top:0.5rem;}
+    .btn-submit:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.4);}
+    .btn-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+    .divider{text-align:center;margin:1.8rem 0;position:relative;color:rgba(255,255,255,0.4);font-size:0.85rem;}
+    .divider::before,.divider::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:rgba(255,255,255,0.1);}
+    .divider::before{left:0;}.divider::after{right:0;}
+
+    .footer-link{text-align:center;margin-top:1.5rem;font-size:0.86rem;color:rgba(255,255,255,0.5);}
+    .footer-link a{color:var(--gold);font-weight:600;text-decoration:none;}
+    .footer-link a:hover{text-decoration:underline;}
+
+    .back-btn{display:inline-flex;align-items:center;gap:0.4rem;color:rgba(255,255,255,0.6);font-size:0.85rem;text-decoration:none;margin-bottom:1.5rem;transition:var(--t);}
+    .back-btn:hover{color:var(--gold);}
+  </style>
+</head>
+<body>
+
+
+  <div class="auth-wrap">
+    <a href="index.html" class="back-btn">← Volver al inicio</a>
+    
+    <div class="logo-section">
+      <div class="logo-mark">L</div>
+      <div class="logo-text">Luminom <em>IA</em></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('login')">Iniciar Sesión</button>
+      <button class="tab" onclick="showTab('register')">Registrarse</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="loginForm" class="form-container active">
+      <form id="formLogin">
+        <div class="form-field">
+          <label for="loginEmail">Correo electrónico</label>
+          <input type="email" id="loginEmail" placeholder="tu@email.com" required/>
+          <span class="field-error" id="loginEmailError"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required/>
+          <span class="field-error" id="loginPasswordError"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Entrar</button>
+      </form>
+
+      <div class="divider">o continúa con</div>
+
+      <div class="footer-link">
+        <p><a href="#" onclick="event.preventDefault();mostrarRecuperacion()">¿Olvidaste tu contraseña?</a></p>
+      </div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="registerForm" class="form-container">
+      <form id="formRegister">
+        <div class="form-field">
+          <label for="registerName">Nombre completo</label>
+          <input type="text" id="registerName" placeholder="Juan Pérez" required/>
+          <span class="field-error" id="registerNameError"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="registerEmail">Correo electrónico</label>
+          <input type="email" id="registerEmail" placeholder="tu@email.com" required/>
+          <span class="field-error" id="registerEmailError"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="registerCarrera">Carrera</label>
+          <select id="registerCarrera" required>
+            <option value="">Selecciona tu carrera</option>
+            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+            <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+            <option value="Ingeniería Civil">Ingeniería Civil</option>
+            <option value="Medicina">Medicina</option>
+            <option value="Derecho">Derecho</option>
+            <option value="Administración de Empresas">Administración de Empresas</option>
+            <option value="Economía">Economía</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Diseño Gráfico">Diseño Gráfico</option>
+            <option value="Arquitectura">Arquitectura</option>
+            <option value="Otra">Otra</option>
+          </select>
+          <span class="field-error" id="registerCarreraError"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="registerPassword">Contraseña</label>
+          <input type="password" id="registerPassword" placeholder="••••••••" minlength="6" required/>
+          <span class="field-error" id="registerPasswordError"></span>
+        </div>
+
+        <div class="form-field">
+          <label for="registerConfirmPassword">Confirmar contraseña</label>
+          <input type="password" id="registerConfirmPassword" placeholder="••••••••" required/>
+          <span class="field-error" id="registerConfirmError"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Crear cuenta</button>
+      </form>
+
+      <div class="divider">o regístrate con</div>
+
+      <div class="footer-link">
+        <p>¿Ya tienes cuenta? <a href="#" onclick="event.preventDefault();showTab('login')">Inicia sesión</a></p>
+      </div>
+    </div>
+
+    <!-- RECOVER PASSWORD FORM -->
+    <div id="recoverForm" class="form-container">
+      <form id="formRecover">
+        <div class="form-field">
+          <label for="recoverEmail">Correo electrónico</label>
+          <input type="email" id="recoverEmail" placeholder="tu@email.com" required/>
+          <span class="field-error" id="recoverEmailError"></span>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar correo de recuperación</button>
+      </form>
+
+      <div class="footer-link" style="margin-top:1.5rem;">
+        <p><a href="#" onclick="event.preventDefault();showTab('login')">← Volver a Iniciar Sesión</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDzS5dYHznoTUsYYxWxfcA5JAHPMOJkSMA",
+      authDomain: "luminom-ia.firebaseapp.com",
+      projectId: "luminom-ia",
+      storageBucket: "luminom-ia.firebasestorage.app",
+      messagingSenderId: "532433042280",
+      appId: "1:532433042280:web:ae5f09598957e2bf8a34dd"
+    };
+
+    // Inicializar Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    console.log('✅ Firebase inicializado correctamente');
+    console.log('Auth disponible:', typeof auth);
+    console.log('Firestore disponible:', typeof db);
+
+    const Auth = {
+      async register(name, email, password, carrera) {
+        try {
+          // Crear usuario en Firebase Auth
+          const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+          const user = userCredential.user;
+
+          // Guardar datos adicionales en Firestore
+          await db.collection('users').doc(user.uid).set({
+            name,
+            email,
+            carrera,
+            createdAt: new Date().toISOString()
+          });
+
+          // Guardar sesión local
+          const session = { userId: user.uid, name, email, carrera };
+          sessionStorage.setItem('luminom_session', JSON.stringify(session));
+
+          return { ok: true, user: session };
+        } catch (error) {
+          console.error('Error en registro:', error);
+          let errorMsg = 'Error al registrar';
+          
+          if (error.code === 'auth/email-already-in-use') {
+            errorMsg = 'Este correo ya está registrado';
+          } else if (error.code === 'auth/weak-password') {
+            errorMsg = 'La contraseña debe tener al menos 6 caracteres';
+          } else if (error.code === 'auth/invalid-email') {
+            errorMsg = 'Correo electrónico inválido';
+          }
+          
+          return { ok: false, error: errorMsg };
+        }
+      },
+
+      async login(email, password) {
+        try {
+          console.log('🔵 Intentando login con:', email);
+          
+          // Autenticar con Firebase
+          const userCredential = await auth.signInWithEmailAndPassword(email, password);
+          const user = userCredential.user;
+          
+          console.log('✅ Autenticación exitosa, UID:', user.uid);
+
+          // Obtener datos del usuario desde Firestore
+          const userDoc = await db.collection('users').doc(user.uid).get();
+          
+          if (userDoc.exists) {
+            const userData = userDoc.data();
+            const session = { 
+              userId: user.uid, 
+              name: userData.name, 
+              email: userData.email, 
+              carrera: userData.carrera 
+            };
+            
+            sessionStorage.setItem('luminom_session', JSON.stringify(session));
+            console.log('✅ Sesión guardada:', session);
+            return { ok: true, user: session };
+          } else {
+            console.error('❌ Usuario no tiene datos en Firestore');
+            return { ok: false, error: 'Usuario no encontrado en la base de datos' };
+          }
+        } catch (error) {
+          console.error('❌ Error en login:', error);
+          console.error('Código de error:', error.code);
+          console.error('Mensaje:', error.message);
+          
+          let errorMsg = 'Error al iniciar sesión';
+          
+          if (error.code === 'auth/user-not-found') {
+            errorMsg = 'No existe una cuenta con este correo';
+          } else if (error.code === 'auth/wrong-password') {
+            errorMsg = 'Contraseña incorrecta';
+          } else if (error.code === 'auth/invalid-email') {
+            errorMsg = 'Correo electrónico inválido';
+          } else if (error.code === 'auth/too-many-requests') {
+            errorMsg = 'Demasiados intentos fallidos. Intenta más tarde o recupera tu contraseña';
+          } else if (error.code === 'auth/invalid-credential') {
+            errorMsg = 'Correo o contraseña incorrectos';
+          } else if (error.code === 'auth/user-disabled') {
+            errorMsg = 'Esta cuenta ha sido deshabilitada';
+          }
+          
+          return { ok: false, error: errorMsg };
+        }
+      },
+
+      async resetPassword(email) {
+        try {
+          console.log('📧 Enviando correo de recuperación a:', email);
+          await auth.sendPasswordResetEmail(email);
+          console.log('✅ Correo enviado exitosamente');
+          return { ok: true };
+        } catch (error) {
+          console.error('❌ Error al enviar correo:', error);
+          let errorMsg = 'Error al enviar correo';
+          
+          if (error.code === 'auth/user-not-found') {
+            errorMsg = 'No existe una cuenta con este correo';
+          } else if (error.code === 'auth/invalid-email') {
+            errorMsg = 'Correo electrónico inválido';
+          }
+          
+          return { ok: false, error: errorMsg };
+        }
+      },
+
+      logout() { 
+        sessionStorage.removeItem('luminom_session'); 
+        window.location.href = 'index.html'; 
+      },
+
+      getSession() { 
+        try { 
+          return JSON.parse(sessionStorage.getItem('luminom_session')); 
+        } catch { 
+          return null; 
+        } 
+      },
+
+      requireAuth() {
+        if (!this.getSession()) { 
+          window.location.href = 'login.html?next=tutor'; 
+          return false; 
+        }
+        return true;
+      }
+    };
+
+    // Hacer Auth global
+    window.Auth = Auth;
+
+    // Redirigir si ya está logueado
+    if (Auth.getSession()) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const next = urlParams.get('next') || 'tutor';
+      window.location.href = next + '.html';
+    }
+
+    // Detectar tab inicial
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    if (tab === 'register') {
+      document.querySelector('.tab.active').classList.remove('active');
+      document.querySelectorAll('.tab')[1].classList.add('active');
+      document.getElementById('loginForm').classList.remove('active');
+      document.getElementById('registerForm').classList.add('active');
+    }
+
+    // Función para cambiar de tab
+    function showTab(tabName) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      if (event && event.target && event.target.classList.contains('tab')) {
+        event.target.classList.add('active');
+      }
+      
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      document.getElementById(tabName + 'Form').classList.add('active');
+      
+      document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+    }
+
+    // Función para mostrar formulario de recuperación
+    function mostrarRecuperacion() {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
+      document.getElementById('recoverForm').classList.add('active');
+      document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+    }
+
+    // Hacer funciones globales para onclick
+    window.showTab = showTab;
+    window.mostrarRecuperacion = mostrarRecuperacion;
+
+    // Handler para login
+    async function handleLogin(event) {
+      event.preventDefault();
+      console.log('🔵 handleLogin llamado');
+      
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      
+      console.log('Email:', email);
+      
+      document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+      
+      if (!email.includes('@')) {
+        document.getElementById('loginEmailError').textContent = 'Email inválido';
+        return;
+      }
+      
+      console.log('Llamando Auth.login...');
+      const result = await Auth.login(email, password);
+      console.log('Resultado login:', result);
+      
+      if (!result.ok) {
+        document.getElementById('loginPasswordError').textContent = result.error;
+        return;
+      }
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const next = urlParams.get('next') || 'tutor';
+      window.location.href = next + '.html';
+    }
+
+    // Handler para registro
+    async function handleRegister(event) {
+      event.preventDefault();
+      console.log('🟢 handleRegister llamado');
+      
+      const name = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim();
+      const carrera = document.getElementById('registerCarrera').value;
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('registerConfirmPassword').value;
+      
+      console.log('Datos registro:', { name, email, carrera });
+      
+      document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+      
+      if (name.length < 3) {
+        document.getElementById('registerNameError').textContent = 'Nombre muy corto';
+        return;
+      }
+      
+      if (!email.includes('@')) {
+        document.getElementById('registerEmailError').textContent = 'Email inválido';
+        return;
+      }
+      
+      if (!carrera) {
+        document.getElementById('registerCarreraError').textContent = 'Selecciona tu carrera';
+        return;
+      }
+      
+      if (password.length < 6) {
+        document.getElementById('registerPasswordError').textContent = 'Mínimo 6 caracteres';
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        document.getElementById('registerConfirmError').textContent = 'Las contraseñas no coinciden';
+        return;
+      }
+      
+      console.log('Llamando Auth.register...');
+      const result = await Auth.register(name, email, password, carrera);
+      console.log('Resultado registro:', result);
+      
+      if (!result.ok) {
+        document.getElementById('registerEmailError').textContent = result.error;
+        return;
+      }
+      
+      window.location.href = 'tutor.html';
+    }
+
+    // Handler para recuperación de contraseña
+    async function handleRecover(event) {
+      event.preventDefault();
+      console.log('🟡 handleRecover llamado');
+      
+      const email = document.getElementById('recoverEmail').value.trim();
+      
+      document.querySelectorAll('.field-error').forEach(e => e.textContent = '');
+      
+      if (!email.includes('@')) {
+        document.getElementById('recoverEmailError').textContent = 'Email inválido';
+        return;
+      }
+      
+      console.log('Enviando correo de recuperación...');
+      const result = await Auth.resetPassword(email);
+      console.log('Resultado:', result);
+      
+      if (!result.ok) {
+        document.getElementById('recoverEmailError').textContent = result.error;
+        return;
+      }
+      
+      alert('✅ ¡Correo enviado! Revisa tu bandeja de entrada para restablecer tu contraseña.');
+      showTab('login');
+    }
+
+    // Hacer funciones globales para onclick
+    window.showTab = showTab;
+    window.mostrarRecuperacion = mostrarRecuperacion;
+    window.handleLogin = handleLogin;
+    window.handleRegister = handleRegister;
+    window.handleRecover = handleRecover;
+
+    // Agregar event listeners a los formularios
+    document.getElementById('formLogin').addEventListener('submit', handleLogin);
+    document.getElementById('formRegister').addEventListener('submit', handleRegister);
+    document.getElementById('formRecover').addEventListener('submit', handleRecover);
+  </script>
+</body>
+</html>
